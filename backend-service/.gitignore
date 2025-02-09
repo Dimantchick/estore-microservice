@@ -33,8 +33,4 @@ build/
 .vscode/
 
 amplicode.xml
-/frontend-service/node/
-/temp/
-.mvn
-mvnw
-mvnw.cmd
+temp

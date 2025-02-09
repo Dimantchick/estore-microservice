@@ -1,0 +1,7 @@
+target
+.idea
+.mvn
+frontend-service/.vscode
+frontend-service/node_modules
+frontend-service/dist
+frontend-service/node
