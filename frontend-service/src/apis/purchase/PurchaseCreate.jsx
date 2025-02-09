@@ -9,7 +9,7 @@ export const PurchaseCreate = (props) => {
     return (
         <Create {...props}>
             <SimpleForm>
-                <ReferenceInput source="electroId" reference="electroItem">
+                <ReferenceInput source="electroId" reference="electroItem" perPage="10000" page="1">
                     <SelectInput source="electroId" validate={Consts.validateRequired} label="Товар"/>
                 </ReferenceInput>
                 <ReferenceInput source="employeeId" reference="employee">
