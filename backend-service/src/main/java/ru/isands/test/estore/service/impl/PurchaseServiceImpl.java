@@ -7,8 +7,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
+import ru.isands.test.estore.dao.entity.ElectroShop;
+import ru.isands.test.estore.dao.entity.ElectroShopPK;
 import ru.isands.test.estore.dao.entity.Purchase;
+import ru.isands.test.estore.dao.repo.ElectroShopRepository;
 import ru.isands.test.estore.dao.repo.PurchaseRepository;
 import ru.isands.test.estore.service.PurchaseService;
 
@@ -25,6 +29,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     private final PurchaseRepository purchaseRepository;
 
     private final ObjectMapper objectMapper;
+    private final ElectroShopRepository electroShopRepository;
 
     @Override
     public Page<Purchase> getAll(Pageable pageable) {
@@ -44,8 +49,17 @@ public class PurchaseServiceImpl implements PurchaseService {
     }
 
     @Override
+    @Transactional
     public Purchase create(Purchase purchase) {
-        return purchaseRepository.save(purchase);
+        Optional<ElectroShop> inShopOpt = electroShopRepository.findById(new ElectroShopPK(purchase.getShopId(), purchase.getElectroId()));
+        if (inShopOpt.isPresent()) {
+            ElectroShop electroShop = inShopOpt.get();
+            if (electroShop.getCount() > 0) {
+                electroShop.setCount(electroShop.getCount() - 1);
+                return purchaseRepository.save(purchase);
+            }
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Товар отсутствует в данном магазине");
     }
 
     @Override
