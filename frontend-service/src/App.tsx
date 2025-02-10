@@ -1,4 +1,4 @@
-import {Admin, CustomRoutes, Resource} from "react-admin";
+import {Admin, Resource} from "react-admin";
 import {dataProvider} from "./dataProvider";
 import {ElectroTypeCreate} from "./apis/electroType/ElectroTypeCreate";
 import {MyLayout} from "./MyLayout";
@@ -36,11 +36,11 @@ import {PurchaseShow} from "./apis/purchase/PurchaseShow";
 import {PurchaseEdit} from "./apis/purchase/PurchaseEdit";
 import {EmployeeCreate} from "./apis/employee/EmployeeCreate";
 import {PurchaseCreate} from "./apis/purchase/PurchaseCreate";
-import {Route} from "react-router-dom";
-import {FileImport} from "./FileImport";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import {CreateFileImport} from "./apis/import/CreateFileImport";
 import {ListFileImport} from "./apis/import/ListFileImport";
+import StarIcon from '@mui/icons-material/Star';
+import {BestpositionList} from "./apis/bestpositionList/BestpositionList";
 
 export const App = () => {
 
@@ -97,13 +97,23 @@ export const App = () => {
                       recordRepresentation="name"
                       icon={AddShoppingCartIcon}
             />
+            {/*Импорт*/}
             <Resource name="import"
                       options={{label: "Импорт архива"}}
                       recordRepresentation="name"
                       icon={FileUploadIcon}
                       create={CreateFileImport}
                       list={ListFileImport}
-                      // show={ListFileImport}
+            />
+            {/*Отчеты*/}
+            <Resource name="bestPosition"
+                      options={{label: "Лучшие по продажам"}}
+                      recordRepresentation="name"
+                      icon={StarIcon}
+                      list={BestpositionList}
+                      hasEdit={false}
+                      hasShow={false}
+                      hasCreate={false}
             />
         </Admin>
     )

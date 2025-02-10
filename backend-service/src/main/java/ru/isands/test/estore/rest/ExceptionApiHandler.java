@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
-import ru.isands.test.estore.dao.ErrorMessageDTO;
+import ru.isands.test.estore.dto.ErrorMessageDTO;
 
 @Slf4j
 @RestControllerAdvice

@@ -16,5 +16,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 	
 	@Query("select e from Employee e where e.positionId = ?1")
 	public List<Employee> findByPosition(Long positionId);
-	
+
+	@Query("select e.id from Employee e where e.positionId = ?1")
+	public List<Long> findEmployeeIdsByPositionId(Long positionId);
+
 }

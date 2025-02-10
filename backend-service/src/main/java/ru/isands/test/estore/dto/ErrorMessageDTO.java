@@ -1,4 +1,4 @@
-package ru.isands.test.estore.dao;
+package ru.isands.test.estore.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
