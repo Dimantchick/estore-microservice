@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
-import ru.isands.test.estore.dao.entity.ElectroEmployeePK;
 
 import javax.persistence.*;
 
@@ -23,7 +22,7 @@ public class ElectroEmployee {
     Long employeeId;
 
     /**
-     * Идентификатор типа электротовара
+     * Идентификатор типа электроники
      */
     @Id
     @Column(name = "electroTypeId", nullable = false)

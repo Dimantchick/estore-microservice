@@ -15,12 +15,18 @@ import java.util.List;
 @ToString
 public class PositionType {
 
+    /**
+     * Идентификатор должности
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "positiontype_counter")
     @TableGenerator(name = "positiontype_counter", pkColumnName = "name", pkColumnValue = "ru.isands.test.entity.dao.ru.isands.test.estore.PositionType", table = "counter", valueColumnName = "currentid", allocationSize = 1)
     @Column(name = "id_", unique = true, nullable = false)
     private Long id;
 
+    /**
+     * Наименование должности
+     */
     @Column(name = "name", nullable = false, length = 150)
     private String name;
 

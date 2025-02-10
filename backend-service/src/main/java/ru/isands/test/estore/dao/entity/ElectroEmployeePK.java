@@ -19,7 +19,7 @@ public class ElectroEmployeePK implements Serializable {
     Long employeeId;
 
     /**
-     *  Идентификатор типа электротовара
+     *  Идентификатор типа электроники
      */
     Long electroTypeId;
 }

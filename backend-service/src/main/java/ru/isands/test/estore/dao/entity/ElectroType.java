@@ -13,12 +13,18 @@ import java.util.List;
 @Table(name = "store_etype")
 public class ElectroType {
 
+    /**
+     * Идентификатор типа электроники
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "etype_counter")
     @TableGenerator(name = "etype_counter", pkColumnName = "name", pkColumnValue = "ru.isands.test.entity.dao.ru.isands.test.estore.ElectroType", table = "counter", valueColumnName = "currentid", allocationSize = 1)
     @Column(name = "id_", unique = true, nullable = false)
     private Long id;
 
+    /**
+     * Наименование типа электроники
+     */
     @Column(name = "name", nullable = false, length = 150)
     private String name;
 

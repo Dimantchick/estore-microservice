@@ -15,29 +15,49 @@ import java.util.List;
 @Table(name = "store_eitem")
 public class ElectroItem {
 
+    /**
+     * Идентификатор электротовара
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "eitem_counter")
     @TableGenerator(name = "eitem_counter", pkColumnName = "name", pkColumnValue = "ru.isands.test.entity.dao.ru.isands.test.estore.ElectroItem", table = "counter", valueColumnName = "currentid", allocationSize = 1)
     @Column(name = "id_", unique = true, nullable = false)
     private Long id;
 
+    /**
+     * Наименование электротовара
+     */
     @Column(name = "name", nullable = false, length = 150)
     private String name;
 
-
+    /**
+     * Тип электрики
+     */
     @Column(name = "etypeId", nullable = false)
     private Long etypeId;
 
+    /**
+     * Цена электротовара
+     */
     @Column(name = "price", nullable = false)
     private Long price;
 
+    /**
+     * Количество электротовара
+     */
     @Column(name = "count", nullable = false)
     private int count;
 
+    /**
+     * Признак архивности электротовара
+     */
     @Column(name = "archive", nullable = false)
     @JsonDeserialize(using = NumericBooleanDeserializer.class)
     private boolean archive;
 
+    /**
+     * Описание электротовара
+     */
     @Column(name = "description", nullable = false, columnDefinition = "TEXT")
     private String description;
 
