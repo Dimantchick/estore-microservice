@@ -4,6 +4,7 @@ import React from "react";
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FileUploadIcon from "@mui/icons-material/FileUpload";
+import StarIcon from "@mui/icons-material/Star";
 
 export const MyMenu = () => {
     const padded = {
@@ -41,6 +42,7 @@ export const MyMenu = () => {
             </Menu.Item>
             <Collapse in={reportsOpen} timeout="auto" unmountOnExit style={padded}>
                 <Menu.ResourceItem name="bestPosition"/>
+                <Menu.Item to="/criteriaReport" primaryText="Отчет по критериям" leftIcon={<StarIcon/>}/>
             </Collapse>
 
 

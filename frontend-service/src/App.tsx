@@ -41,6 +41,7 @@ import {CreateFileImport} from "./apis/import/CreateFileImport";
 import {ListFileImport} from "./apis/import/ListFileImport";
 import StarIcon from '@mui/icons-material/Star';
 import {BestpositionList} from "./apis/bestpositionList/BestpositionList";
+import {CriteriareportList} from "./apis/criteriaReport/CriteriareportList";
 
 export const App = () => {
 
@@ -111,6 +112,15 @@ export const App = () => {
                       recordRepresentation="name"
                       icon={StarIcon}
                       list={BestpositionList}
+                      hasEdit={false}
+                      hasShow={false}
+                      hasCreate={false}
+            />
+            <Resource name="criteriaReport"
+                      options={{label: "Отчет по критериям"}}
+                      recordRepresentation="sum"
+                      icon={StarIcon}
+                      list={CriteriareportList}
                       hasEdit={false}
                       hasShow={false}
                       hasCreate={false}

@@ -17,4 +17,12 @@ public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
 
     List<Purchase> findByEmployeeIdAndPurchaseDateAfter(Long employee, Date purchaseDate);
 
+    @Query("select sum(p.electroItem.price) from Purchase p where p.purchaseType.id = ?1")
+    Long countPurchasesSumForType(Long purchaseTypeId);
+
+    @Query("select p from Purchase p where p.purchaseType.id = 1 and p.electroItem.etypeId = ?1")
+    List<Purchase> findByElectroType(Long type);
+
+
+
 }

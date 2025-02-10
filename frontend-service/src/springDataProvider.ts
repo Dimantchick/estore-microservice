@@ -1,6 +1,5 @@
 import {stringify} from "query-string";
-import {DataProvider, fetchUtils, useNotify, useRedirect} from "react-admin";
-import HttpError from "ra-core/src/dataProvider/HttpError";
+import {DataProvider, fetchUtils} from "react-admin";
 
 export default (
     apiUrl: string,
@@ -69,9 +68,6 @@ export default (
                 method: 'POST',
                 body: formData,
             }).then(({json}) => {
-                // const notify = useNotify();
-                // console.log("Result ", json)
-                // notify(json.status);
                 return ({
                     data: {...params.data, id: 0},
                 })
