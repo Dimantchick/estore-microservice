@@ -9,9 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
+import ru.isands.test.estore.dao.entity.ElectroItem;
 import ru.isands.test.estore.dao.entity.ElectroShop;
 import ru.isands.test.estore.dao.entity.ElectroShopPK;
 import ru.isands.test.estore.dao.entity.Purchase;
+import ru.isands.test.estore.dao.repo.ElectroItemRepository;
 import ru.isands.test.estore.dao.repo.ElectroShopRepository;
 import ru.isands.test.estore.dao.repo.PurchaseRepository;
 import ru.isands.test.estore.service.PurchaseService;
@@ -30,6 +32,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     private final ObjectMapper objectMapper;
     private final ElectroShopRepository electroShopRepository;
+    private final ElectroItemRepository electroItemRepository;
 
     @Override
     public Page<Purchase> getAll(Pageable pageable) {
@@ -56,6 +59,12 @@ public class PurchaseServiceImpl implements PurchaseService {
             ElectroShop electroShop = inShopOpt.get();
             if (electroShop.getCount() > 0) {
                 electroShop.setCount(electroShop.getCount() - 1);
+                ElectroItem electroItem = electroItemRepository.findById(electroShop.getElectroItemId())
+                        .orElseThrow(() ->
+                                new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY,
+                                        "Не найден электротовар" + electroShop.getElectroItemId())
+                        );
+                electroItem.setCount(electroItem.getCount() - 1);
                 return purchaseRepository.save(purchase);
             }
         }
