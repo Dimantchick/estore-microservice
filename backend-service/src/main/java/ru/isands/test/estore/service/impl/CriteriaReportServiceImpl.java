@@ -43,7 +43,7 @@ public class CriteriaReportServiceImpl implements CriteriaReportService {
     }
 
     private Map.Entry<Long, Integer> getBestManagerEntry() {
-        List<Purchase> purchases = purchaseRepository.findByElectroType(5L);
+        List<Purchase> purchases = purchaseRepository.findByPurchaseTypeAndElectroType(1L, 5L);
         Map<Long, List<Purchase>> collect = purchases.stream().collect(Collectors.groupingBy(Purchase::getEmployeeId));
         Map<Long, Integer> sizeMap = collect.entrySet().stream()
                 .collect(Collectors.toMap(
